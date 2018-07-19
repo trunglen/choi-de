@@ -1,11 +1,13 @@
-<div class="big-wrapper">
-  <div class="wrapper">
-    <div class="login">
-      <p class="title">Đăng nhập vào hệ thống</p>
-      <button (click)="login()" style="background: url(/assets/images/mine/sign-in-with-google.png); background-size: cover;">
-      </button>
-    </div>
-    
-  </div>
+<div>
+    <form class="modal-content animate" action="/action_page.php">
+      <h2 class="w3-center" style="text-shadow:1px 1px 0 #444">Kiếm tiền easy</h2>
+      <div class="imgcontainer">
+        <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
+      </div>
   
-</div>
+      <div class="container">
+        <button type="button" class="w3-red" (click)="loginGmail()">Đăng nhập bằng Gmail</button>
+        <button type="button" class="w3-blue" (click)="loginFb()">Đăng nhập bằng Facebook</button>
+      </div>
+    </form>
+  </div>
