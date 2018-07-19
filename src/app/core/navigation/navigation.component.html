@@ -1,89 +1,21 @@
-<header class="topbar">
-  <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
-      <!-- ============================================================== -->
-      <!-- Logo -->
-      <!-- ============================================================== -->
-      <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">
-              <!-- Logo icon --><b>
-                  <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                  
-                  <!-- Light Logo icon -->
-                  <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-              </b>
-              <!--End Logo icon -->
-              <!-- Logo text --><span>
-               
-               <!-- Light Logo text -->    
-               <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
-      </div>
-      <!-- ============================================================== -->
-      <!-- End Logo -->
-      <!-- ============================================================== -->
-      <div class="navbar-collapse">
-          <!-- ============================================================== -->
-          <!-- toggle and nav items -->
-          <!-- ============================================================== -->
-          <ul class="navbar-nav mr-auto mt-md-0">
-              <!-- This is  -->
-              <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-              <!-- ============================================================== -->
-              <!-- Search -->
-              <!-- ============================================================== -->
-              <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
-                  <form class="app-search">
-                      <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
-              </li>
-          </ul>
-          <!-- ============================================================== -->
-          <!-- User profile and search -->
-          <!-- ============================================================== -->
-          <ul class="navbar-nav my-lg-0">
-              <!-- ============================================================== -->
-              <!-- Profile -->
-              <!-- ============================================================== -->
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class="profile-pic m-r-10" />Markarn Doe</a>
-              </li>
-          </ul>
-      </div>
-  </nav>
-</header>
-<!-- ============================================================== -->
-<!-- End Topbar header -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- Left Sidebar - style you can find in sidebar.scss  -->
-<!-- ============================================================== -->
-<aside class="left-sidebar">
-  <!-- Sidebar scroll-->
-  <div class="scroll-sidebar">
-      <!-- Sidebar navigation-->
-      <nav class="sidebar-nav">
-          <ul id="sidebarnav">
-              <li> <a class="waves-effect waves-dark" href="index.html" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
-              </li>
-              <li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Người chơi</span></a>
-              </li>
-              <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Kiếm tiền</span></a>
-              </li>
-              <li> <a class="waves-effect waves-dark" href="icon-material.html" aria-expanded="false"><i class="mdi mdi-emoticon"></i><span class="hide-menu">Rút tiền</span></a>
-              </li>
-              <li> <a class="waves-effect waves-dark" href="icon-material.html" aria-expanded="false"><i class="mdi mdi-emoticon"></i><span class="hide-menu">Thông báo</span></a>
-              </li>
-              <li> <a class="waves-effect waves-dark" href="map-google.html" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">Liên hệ với admin</span></a>
-              </li>
-              <li> <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false"><i class="mdi mdi-help-circle"></i><span class="hide-menu">Hướng dẫn</span></a>
-              </li>
-          </ul>
-      </nav>
-      <!-- End Sidebar navigation -->
-  </div>
-  <!-- End Sidebar scroll-->
-  <!-- Bottom points-->
-  <div class="sidebar-footer">
-      <!-- item--><a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
-      <!-- item--><a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-      <!-- item--><a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a> </div>
-  <!-- End Bottom points-->
-</aside>
+<div class="w3-top">
+    <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Logo</a>
+     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
+     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
+     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
+     <div class="w3-dropdown-hover w3-hide-small">
+       <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>     
+       <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
+         <a href="#" class="w3-bar-item w3-button">One new friend request</a>
+         <a href="#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
+         <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
+       </div>
+     </div>
+     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
+       <img src="/w3images/avatar2.png" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
+     </a>
+    </div>
+   </div>
+   
