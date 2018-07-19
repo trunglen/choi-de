@@ -22,9 +22,13 @@ export class HomeComponent implements OnInit {
     this.afAuth.user.subscribe(res => {
       this.user = { name: res.displayName, avatar: res.photoURL }
       this.userRef = this.db.database.ref('user')
-      this.userRef.on('child_added', data => {
-        alert('Người chơi ' + data.val().name + ' mới tham gia')
-      })
+      this.userRef.on('child_added', function(data) {
+        console.log('on added')
+      });
+      // this.db.object('user').valueChanges().subscribe(res=>{
+      //   console.log('changed ', res)
+      // })
+      
     })
   }
 
