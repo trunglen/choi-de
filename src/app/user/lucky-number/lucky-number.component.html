@@ -5,10 +5,15 @@
           <h6 class="w3-opacity">Dự đoán hôm nay</h6>
           <form class="w3-container" #f="ngForm">
              <label>Số tiền</label>
-             <input class="w3-input" type="number" name="money" ngModel>
+             <input class="w3-input" type="number" name="money" ngModel >
              <label>Con số</label>
-             <input class="w3-input" type="number" name="number" ngModel>
-             <button type="button" class="w3-button w3-theme w3-margin-top" (click)="onGuess(f)"><i class="fa fa-pencil"></i> &nbsp;Dự đoán</button>                         
+             <input class="w3-input" type="number" name="number" ngModel max="99" min="00" #number value="0">
+             <div class="w3-panel w3-yellow w3-display-container" *ngIf="number.value>99">
+                <span onclick="this.parentElement.style.display='none'" class="w3-button w3-yellow w3-large w3-display-topright">×</span>
+                <h6>Chú ý!</h6>
+                <p>Số dự đoán phải từ 00 - 99.</p>
+              </div>
+             <button type="button" class="w3-button w3-theme w3-margin-top" [disabled]="!f.valid" (click)="onGuess(f)"><i class="fa fa-pencil"></i> &nbsp;Dự đoán</button>                         
          </form>
         </div>
       </div>
@@ -20,23 +25,21 @@
      <div class="w3-col m12">
          <div class="w3-card w3-round w3-white">
            <div class="w3-container w3-padding">
-             <h6 class="w3-opacity">Kết quả</h6>
+             <h6 class="w3-opacity">Dự đoán ngày {{now}}</h6>
              <table class="w3-table w3-bordered w3-striped w3-border test w3-hoverable">
-                     <tr class="w3-green">
-                       <th>Dự đoán</th>
-                       <th>Số tiền</th>
-                       <th>Thắng</th>
-                       <th>Thua</th>
-                       <th></th>
-                     </tr>
-                     <tr *ngFor="let n of guessNumber">
-                       <td>{{n.number}}</td>
-                       <td>{{n.money}}</td>
-                       <td>50</td>
-                       <td>50</td>
-                       <td>50</td>
-                     </tr>
-                     </table>
+                <tr class="w3-green">
+                  <th>Dự đoán</th>
+                  <th>Số tiền</th>
+                  <th></th>
+                </tr>
+                <tr *ngFor="let n of guessNumber;let i = index">
+                  <td>{{n.number}}</td>
+                  <td>{{n.money}}</td>
+                  <td>
+                      <button class="w3-btn w3-white w3-border w3-border-red w3-text-red w3-round-large" (click)="onDeleteNumber(i)">Xóa</button>
+                  </td>
+                </tr>
+              </table>
            </div>
          </div>
      </div>

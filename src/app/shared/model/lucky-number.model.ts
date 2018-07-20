@@ -1,4 +1,4 @@
 export interface LuckyNumber {
-    number: Number
-    money: Number
+    number: number
+    money: number
 }

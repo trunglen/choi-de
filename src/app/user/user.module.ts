@@ -11,6 +11,7 @@ import { WithdrawPanelComponent } from './withdraw-panel/withdraw-panel.componen
 import { CommonNotificationComponent } from './common-notification/common-notification.component';
 import { TopUserComponent } from './top-user/top-user.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import { WinnerComponent } from './winner/winner.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { NewUserComponent } from './new-user/new-user.component';
     CoreModule,
     FormsModule
   ],
-  declarations: [HomeComponent, DashboardComponent, LuckyNumberComponent, WithdrawPanelComponent, CommonNotificationComponent, TopUserComponent, NewUserComponent]
+  declarations: [HomeComponent, DashboardComponent, LuckyNumberComponent, WithdrawPanelComponent, CommonNotificationComponent, TopUserComponent, NewUserComponent, WinnerComponent]
 })
 export class UserModule { }

@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   userRef: firebase.database.Reference
   hideStop = true
   interval
+  profile: User = <User>{}
   constructor(
     public afAuth: AngularFireAuth,
     private db: AngularFireDatabase,
@@ -26,16 +27,10 @@ export class HomeComponent implements OnInit {
       var self = this
       this.afAuth.user.subscribe(res => {
         this.user = { name: res.displayName, avatar: res.photoURL }
-        // this.db.object('user').valueChanges().subscribe(res=>{
-        //   console.log('changed ', res)
-        // })
-
+        this.db.object('user/' + res.uid).valueChanges().subscribe(profile => {
+          this.profile = <User>profile
+        })
       })
-      this.userRef = this.db.database.ref('user')
-      this.userRef.on('child_added', (data) => {
-        // this.newUsers.push(<User>data.val())
-        // console.log(this.newUsers)
-      });
     });
   }
 
