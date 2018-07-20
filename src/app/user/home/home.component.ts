@@ -13,7 +13,6 @@ import { ActivatedRoute } from '@angular/router';
 export class HomeComponent implements OnInit {
   luckyNumber = 99
   user = { name: '', avatar: '' }
-  newUsers: Observable<any[]>;
   userRef: firebase.database.Reference
   hideStop = true
   interval
@@ -24,11 +23,9 @@ export class HomeComponent implements OnInit {
   ) {
     route.params.subscribe(val => {
       // put the code from `ngOnInit` here
-      this.newUsers = this.db.list('user').valueChanges()
       var self = this
       this.afAuth.user.subscribe(res => {
         this.user = { name: res.displayName, avatar: res.photoURL }
-
         // this.db.object('user').valueChanges().subscribe(res=>{
         //   console.log('changed ', res)
         // })

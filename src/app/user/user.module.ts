@@ -9,6 +9,8 @@ import { CoreModule } from '../core/core.module';
 import { LuckyNumberComponent } from './lucky-number/lucky-number.component';
 import { WithdrawPanelComponent } from './withdraw-panel/withdraw-panel.component';
 import { CommonNotificationComponent } from './common-notification/common-notification.component';
+import { TopUserComponent } from './top-user/top-user.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 @NgModule({
   imports: [
@@ -17,6 +19,6 @@ import { CommonNotificationComponent } from './common-notification/common-notifi
     CoreModule,
     FormsModule
   ],
-  declarations: [HomeComponent, DashboardComponent, LuckyNumberComponent, WithdrawPanelComponent, CommonNotificationComponent]
+  declarations: [HomeComponent, DashboardComponent, LuckyNumberComponent, WithdrawPanelComponent, CommonNotificationComponent, TopUserComponent, NewUserComponent]
 })
 export class UserModule { }

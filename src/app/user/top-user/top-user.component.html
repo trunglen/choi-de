@@ -1,0 +1,17 @@
+<div class="w3-card w3-round w3-white w3-center">
+  <div class="w3-container">
+    <p>Top đại gia</p>
+    <div *ngFor="let u of topUsers|async">
+       <img [src]="u.avatar" alt="Avatar" style="width:50%;max-height: 97px;"><br>
+       <span>{{u.name}}</span>
+       <div class="w3-row"><!--w3-opacity-->
+       <div class="w3-half">
+           <button class="w3-button w3-block w3-green w3-section" title="Accept">Số tiền</button>
+       </div>
+       <div class="w3-half">
+           <button class="w3-button w3-block w3-red w3-section" title="Decline">{{u.money}}</button>
+       </div>
+       </div>
+    </div>
+  </div>
+</div>
