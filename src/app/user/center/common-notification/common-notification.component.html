@@ -1,0 +1,7 @@
+<div class="w3-container w3-card w3-white w3-round w3-margin w3-animate-top" *ngFor = "let noti of notifications$|async"><br>
+  <span class="w3-right w3-opacity">{{(-noti.at)|date}}</span>
+  <h4>{{noti.title}}</h4>
+  <hr class="w3-clear">
+  <p>{{noti.content}}.</p>
+</div>
+

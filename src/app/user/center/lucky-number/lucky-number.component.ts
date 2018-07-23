@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LuckyNumber } from '../../shared/model/lucky-number.model';
 import { NgForm } from '@angular/forms';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs';
-import { User } from '../../shared/model/user.model';
+import { LuckyNumber } from '../../../shared/model/lucky-number.model';
 
 @Component({
   selector: 'app-lucky-number',

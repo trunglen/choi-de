@@ -6,6 +6,7 @@ import { AuthGuard } from './auth/auth-guard.service';
 const routes: Routes = [
     { path: '', loadChildren: './user/user.module#UserModule' },
     { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
+    { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
     { path: '**', component: PageNotFoundComponent },
 ];
 

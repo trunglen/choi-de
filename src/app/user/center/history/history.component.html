@@ -1,0 +1,24 @@
+
+  <div class="w3-row-padding">
+    <div class="w3-col m12">
+        <div class="w3-card w3-round w3-white">
+          <div class="w3-container w3-padding">
+            <h6 class="w3-opacity">Lịch sử dự đoán</h6>
+            <table class="w3-table w3-bordered w3-striped w3-border test w3-hoverable">
+               <tr class="w3-green">
+                 <th>Ngày</th>
+                 <th>Dự đoán</th>
+                 <th>Số tiền</th>
+                 <th>Thắng</th>
+               </tr>
+               <tr *ngFor="let n of histories;let i = index">
+                 <td>{{n.date}}</td>
+                 <td>{{n.number}}</td>
+                 <td>{{n.money}}</td>
+                 <td>{{n.win}}</td>
+               </tr>
+             </table>
+          </div>
+        </div>
+    </div>
+ </div>

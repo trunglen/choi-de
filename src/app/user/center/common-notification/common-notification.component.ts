@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-common-notification',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommonNotificationComponent implements OnInit {
 
-  constructor() { }
+  notifications$: Observable<any>
+  constructor(
+    private db: AngularFireDatabase
+  ) { }
 
   ngOnInit() {
+    this.notifications$ = this.db.list('/notification', ref => ref.orderByChild('at')).valueChanges()
   }
 
 }

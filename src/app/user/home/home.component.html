@@ -67,8 +67,8 @@
            
            <!-- Middle Column -->
            <div class="w3-col m7">
-           
              <app-lucky-number></app-lucky-number>
+             <app-history [uid]="user.uid"></app-history>
              <app-common-notification></app-common-notification>
              
            <!-- End Middle Column -->
@@ -76,15 +76,16 @@
            
            <!-- Right Column -->
            <div class="w3-col m2">
-             <div class="w3-card w3-round w3-white w3-center">
-               <div class="w3-container">
-                 <p>Lucky Number:</p>
-                 <span class="w3-badge w3-xxxlarge w3-padding w3-red">{{luckyNumber}}</span>
-                 <p><button class="w3-button w3-block w3-theme-l4" *ngIf="hideStop" (click)="startRandom()">Bắt đầu tìm</button></p>
-                 <p><button class="w3-button w3-block w3-theme-l4" *ngIf="!hideStop" (click)="stopRandom()">Dừng tìm</button></p>
-               </div>
-             </div>
-             <br>
+              <app-result-widget></app-result-widget>
+              <div class="w3-card w3-round w3-white w3-center">
+                  <div class="w3-container">
+                    <p>Kết quả :</p>
+                    <span class="w3-badge w3-xxxlarge w3-padding w3-red">{{luckyNumber}}</span>
+                    <p><button class="w3-button w3-block w3-theme-l4" *ngIf="hideStop" (click)="startRandom()">Bắt đầu tìm</button></p>
+                    <p><button class="w3-button w3-block w3-theme-l4" *ngIf="!hideStop" (click)="stopRandom()">Dừng tìm</button></p>
+                  </div>
+                </div>
+                <br>
              
              <app-new-user></app-new-user>
              <br>

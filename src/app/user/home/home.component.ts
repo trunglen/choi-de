@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   luckyNumber = 99
-  user = { name: '', avatar: '' }
+  user = { name: '', avatar: '', uid: '' }
   userRef: firebase.database.Reference
   hideStop = true
   interval
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
       // put the code from `ngOnInit` here
       var self = this
       this.afAuth.user.subscribe(res => {
-        this.user = { name: res.displayName, avatar: res.photoURL }
+        this.user = { name: res.displayName, avatar: res.photoURL, uid: res.uid }
         this.db.object('user/' + res.uid).valueChanges().subscribe(profile => {
           this.profile = <User>profile
         })
@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('HomeComponent')
 
   }
 

@@ -30,11 +30,13 @@
                 <tr class="w3-green">
                   <th>Dự đoán</th>
                   <th>Số tiền</th>
+                  <th>Thắng</th>
                   <th></th>
                 </tr>
                 <tr *ngFor="let n of guessNumber;let i = index">
                   <td>{{n.number}}</td>
                   <td>{{n.money}}</td>
+                  <td>{{n.win}}</td>
                   <td>
                       <button class="w3-btn w3-white w3-border w3-border-red w3-text-red w3-round-large" (click)="onDeleteNumber(i)">Xóa</button>
                   </td>
