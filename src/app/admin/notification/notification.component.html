@@ -3,17 +3,26 @@
 </div>
 <form class="w3-container w3-card-4" #f="ngForm">
   <br>
-  <p>      
-  <label class="w3-text-grey">Tiêu đề</label>
-  <input class="w3-input w3-border" type="text" required="" ngModel name="title">
+  <p>
+    <label class="w3-text-grey">Chọn user</label>
+    <select name="user" ngModel id="" class="w3-input w3-border">
+      <option value="" selected="selected">Gửi tới tất cả</option>
+      <option [value]="u.uid" *ngFor="let u of user$|async">{{u.name}}</option>
+    </select>
   </p>
-  <p>      
-  <label class="w3-text-grey">Nội dung</label>
-  <textarea class="w3-input w3-border" style="resize:none" ngModel name="content"></textarea>
+  <p>
+    <label class="w3-text-grey">Tiêu đề</label>
+    <input class="w3-input w3-border" type="text" required="" ngModel name="title">
+  </p>
+  <p>
+    <label class="w3-text-grey">Nội dung</label>
+    <textarea class="w3-input w3-border" style="resize:none" ngModel name="content"></textarea>
   </p>
   <br>
-    <p><button type="button"  (click)="onSendNotify(f)"class="w3-btn w3-padding w3-teal" style="width:120px">Gửi &nbsp; ❯</button></p>
-  </form>
+  <p>
+    <button type="button" (click)="onSendNotify(f)" class="w3-btn w3-padding w3-teal" style="width:120px">Gửi &nbsp; ❯</button>
+  </p>
+</form>
 
 <br/>
 <div class="w3-container w3-teal">
@@ -21,10 +30,12 @@
 </div>
 <form class="w3-container w3-card-4" #f1="ngForm">
   <br>
-  <p>      
-  <label class="w3-text-grey">Số đề hôm nay</label>
-  <input class="w3-input w3-border" type="number" required="" ngModel name="number">
+  <p>
+    <label class="w3-text-grey">Số đề hôm nay</label>
+    <input class="w3-input w3-border" type="number" required="" ngModel name="number">
   </p>
   <br>
-    <p><button type="button"  (click)="onSendResult(f1)"class="w3-btn w3-padding w3-teal" style="width:120px">Gửi &nbsp; ❯</button></p>
-  </form>
+  <p>
+    <button type="button" (click)="onSendResult(f1)" class="w3-btn w3-padding w3-teal" style="width:120px">Gửi &nbsp; ❯</button>
+  </p>
+</form>

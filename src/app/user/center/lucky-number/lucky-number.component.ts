@@ -4,6 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs';
 import { LuckyNumber } from '../../../shared/model/lucky-number.model';
+import { checkTime } from '../../../common/constant';
 
 @Component({
   selector: 'app-lucky-number',
@@ -16,6 +17,7 @@ export class LuckyNumberComponent implements OnInit {
   guessNumber$: Observable<any>
   now: string
   uid: string
+  isEndTime = false
   constructor(
     public afAuth: AngularFireAuth,
     private db: AngularFireDatabase
@@ -23,6 +25,9 @@ export class LuckyNumberComponent implements OnInit {
 
   ngOnInit() {
     const date = new Date()
+    if (date.getHours() >= checkTime) {
+      this.isEndTime = true
+    }
     this.now = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear()
     this.afAuth.user.subscribe(res => {
       this.uid = res.uid

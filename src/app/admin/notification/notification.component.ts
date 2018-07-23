@@ -4,6 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LuckyNumber } from '../../shared/model/lucky-number.model';
 import { UserService } from '../../shared/service/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-notification',
@@ -12,6 +13,7 @@ import { UserService } from '../../shared/service/user.service';
   providers: [UserService]
 })
 export class NotificationComponent implements OnInit {
+  user$: Observable<any>
   constructor(
     private db: AngularFireDatabase,
     public afAuth: AngularFireAuth,
@@ -19,6 +21,7 @@ export class NotificationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.user$ = this.db.list('/user').valueChanges()
   }
 
   onSendNotify(f: NgForm) {
@@ -27,7 +30,13 @@ export class NotificationComponent implements OnInit {
     value.at = -at
     const ref = this.db.database.ref()
     var updates = {}
-    updates['/notification/' + (-at)] = value
+    if (value.user) {
+      console.log(value.user)
+      value.at = -(new Date().getTime())
+      updates['/private_notification/' + this.afAuth.auth.currentUser.uid + '/' + value.at] = value
+    } else {
+      updates['/notification/' + (-at)] = value
+    }
     ref.update(updates).then(res => {
       alert('Đã gửi thành công')
       f.reset()

@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements OnInit {
-  @Input() uid: string
   guess$: Observable<any>
   histories = []
   constructor(
@@ -18,14 +17,15 @@ export class HistoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.guess$ = this.db.list('/guess/' + this.uid).valueChanges()
-    this.db.list('/guess/' + this.uid).valueChanges().subscribe(res => {
-      res.forEach(element1 => {
-        console.log(element1)
-        Object.keys(element1).forEach((k, i) => {
-          element1[k].forEach(element => {
-            this.histories.push({ date: k, money: (<any>element).money, number: (<any>element).number, win: (<any>element).win })
-          });
+    const uid = localStorage.getItem('app_uid')
+    this.guess$ = this.db.list('/guess/' + uid).valueChanges()
+    this.db.database.ref('/guess/' + uid).once('value').then(res => {
+      this.histories = []
+      Object.keys(res.val()).forEach(k1 => {
+        res.val()[k1].forEach((element, i) => {
+          // element1[k].forEach(element => {
+          this.histories.push({ date: k1, money: (<any>element).money, number: (<any>element).number, win: (<any>element).win })
+          // });
         })
       });
     })

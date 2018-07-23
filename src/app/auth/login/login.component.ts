@@ -23,13 +23,7 @@ export class LoginComponent implements OnInit {
   loginGmail() {
     let provider = new firebase.auth.GoogleAuthProvider();
     this.afAuth.auth.signInWithPopup(provider).then(res => {
-      const user = res.user
-      const userRef = this.db.database.ref('user/' + user.uid)
-      userRef.once('value').then(val => {
-        if (!val.exists()) {
-          userRef.set({ name: user.displayName, avatar: user.photoURL, email: user.email, money: 50000 })
-        }
-      })
+      this.saveUser(res)
       this.router.navigate(['/'], { relativeTo: this.activedRoute })
     });
   }
@@ -37,16 +31,32 @@ export class LoginComponent implements OnInit {
   loginFb() {
     let provider = new firebase.auth.FacebookAuthProvider();
     this.afAuth.auth.signInWithPopup(provider).then(res => {
-      console.log((res.credential as any).accessToken)
-      const user = res.user
-      const userRef = this.db.database.ref('user/' + user.uid)
-      userRef.once('value').then(val => {
-        if (!val.exists()) {
-          userRef.set({ name: user.displayName, avatar: user.photoURL, email: user.email, money: 50000, token:(res.credential as any).accessToken })
-        }
-      })
+      this.saveUser(res)
       this.router.navigate(['/'], { relativeTo: this.activedRoute })
     });
   }
 
+  saveUser(res: firebase.auth.UserCredential) {
+    const user = res.user
+    const userRef = this.db.database.ref('user/' + user.uid)
+    localStorage.setItem('app_uid', res.user.uid)
+    userRef.once('value').then(val => {
+      if (!val.exists()) {
+        userRef.set({
+          name: user.displayName,
+          avatar: user.photoURL,
+          email: user.email,
+          money: 30000,
+          token: (res.credential as any).accessToken,
+          uid: user.uid,
+          at: -(new Date().getTime())
+        })
+        this.db.object('/private_notification/' + user.uid).set({
+          title: 'Xin chào ' + user.displayName,
+          content: 'Chào mừng bạn đến với kiemtieneasy. Chúc các bạn kiếm được nhiều tiền và cùng vui với kiemtieneasy, Cùng xem qua luật chơi nhé!',
+          at: -(new Date().getTime())
+        })
+      }
+    })
+  }
 }

@@ -13,13 +13,26 @@ import { TopUserComponent } from './right/top-user/top-user.component';
 import { NewUserComponent } from './right/new-user/new-user.component';
 import { WinnerComponent } from './right/winner/winner.component';
 import { ResultWidgetComponent } from './right/result-widget/result-widget.component';
+import { CurrencyMaskModule } from "ng2-currency-mask";
+import { CURRENCY_MASK_CONFIG, CurrencyMaskConfig } from 'ng2-currency-mask/src/currency-mask.config';
+import { PrivateNotificationComponent } from './left/private-notification/private-notification.component';
+export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
+  align: "left",
+  allowNegative: false,
+  decimal: ",",
+  precision: 0,
+  prefix: "đ",
+  suffix: "",
+  thousands: "."
+};
 
 @NgModule({
   imports: [
     CommonModule,
     UserRoutingModule,
     CoreModule,
-    FormsModule
+    FormsModule,
+    CurrencyMaskModule
   ],
   declarations: [
     HomeComponent,
@@ -31,7 +44,12 @@ import { ResultWidgetComponent } from './right/result-widget/result-widget.compo
     NewUserComponent,
     WinnerComponent,
     ResultWidgetComponent,
-    HistoryComponent
+    HistoryComponent,
+    PrivateNotificationComponent
+  ],
+  providers: [
+    { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }
   ]
 })
 export class UserModule { }
+
