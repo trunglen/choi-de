@@ -20,7 +20,7 @@ export class WithdrawPanelComponent implements OnInit {
 
   onEarnMoney() {
     this.isLoading = true
-    this.http.get(endpoint + '/link/token/generate?uid=' + localStorage.getItem('app_uid')).subscribe((res: any) => {
+    this.http.get(endpoint + '/link/token/generate?uid=' + sessionStorage.getItem('app_uid')).subscribe((res: any) => {
       this.shortenLink = res.shortened_url
       this.showResult = true
     }, err => console.log(err), () => this.isLoading = false)

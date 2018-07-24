@@ -17,17 +17,20 @@ export class HistoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const uid = localStorage.getItem('app_uid')
+    const uid = sessionStorage.getItem('app_uid')
     this.guess$ = this.db.list('/guess/' + uid).valueChanges()
     this.db.database.ref('/guess/' + uid).once('value').then(res => {
+      console.log(res.val(), uid)
       this.histories = []
-      Object.keys(res.val()).forEach(k1 => {
-        res.val()[k1].forEach((element, i) => {
-          // element1[k].forEach(element => {
-          this.histories.push({ date: k1, money: (<any>element).money, number: (<any>element).number, win: (<any>element).win })
-          // });
-        })
-      });
+      if (res.val()) {
+        Object.keys(res.val()).forEach(k1 => {
+          res.val()[k1].forEach((element, i) => {
+            // element1[k].forEach(element => {
+            this.histories.push({ date: k1, money: (<any>element).money, number: (<any>element).number, win: (<any>element).win })
+            // });
+          })
+        });
+      }
     })
   }
 }

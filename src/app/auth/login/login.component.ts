@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   saveUser(res: firebase.auth.UserCredential) {
     const user = res.user
     const userRef = this.db.database.ref('user/' + user.uid)
-    localStorage.setItem('app_uid', res.user.uid)
+    sessionStorage.setItem('app_uid', res.user.uid)
     userRef.once('value').then(val => {
       if (!val.exists()) {
         userRef.set({

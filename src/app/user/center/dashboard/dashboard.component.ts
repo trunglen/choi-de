@@ -21,34 +21,10 @@ export class DashboardComponent implements OnInit {
     public afAuth: AngularFireAuth,
     private db: AngularFireDatabase,
     route: ActivatedRoute
-  ) {
-    route.params.subscribe(val => {
-      // put the code from `ngOnInit` here
-      var self = this
-      this.afAuth.user.subscribe(res => {
-        this.user = { name: res.displayName, avatar: res.photoURL, uid: res.uid }
-        this.db.object('user/' + res.uid).valueChanges().subscribe(profile => {
-          this.profile = <User>profile
-        })
-      })
-    });
-  }
+  ) {}
 
   ngOnInit() {
     console.log('HomeComponent')
 
   }
-
-  startRandom() {
-    this.hideStop = false
-    this.interval = setInterval(() => {
-      this.luckyNumber = Number.parseInt(Math.random() * 99 + '')
-    }, 10)
-  }
-
-  stopRandom() {
-    this.hideStop = true
-    clearInterval(this.interval)
-  }
-
 }

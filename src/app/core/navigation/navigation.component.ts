@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-navigation',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private afAuth: AngularFireAuth
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(
+  ) { }
+
+  logout() {
+    this.afAuth.auth.signOut().then(res => {
+      sessionStorage.clear()
+      this.router.navigate(['/auth/login'])
+    })
   }
-
 }
