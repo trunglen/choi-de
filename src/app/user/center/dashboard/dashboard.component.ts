@@ -20,11 +20,11 @@ export class DashboardComponent implements OnInit {
   constructor(
     public afAuth: AngularFireAuth,
     private db: AngularFireDatabase,
-    route: ActivatedRoute
+    private router: ActivatedRoute
   ) {}
 
   ngOnInit() {
     console.log('HomeComponent')
-
+    this.router.params.subscribe(res=>console.log(res.id))
   }
 }

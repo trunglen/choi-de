@@ -14,6 +14,6 @@ export class TopUserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.topUsers = this.db.list('user',ref=>ref.orderByChild('money').limitToFirst(10)).valueChanges()
+    this.topUsers = this.db.list('user',ref=>ref.orderByChild('sort_money').limitToFirst(10)).valueChanges()
   }
 }

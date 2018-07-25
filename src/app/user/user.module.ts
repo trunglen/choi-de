@@ -18,6 +18,7 @@ import { CURRENCY_MASK_CONFIG, CurrencyMaskConfig } from 'ng2-currency-mask/src/
 import { PrivateNotificationComponent } from './left/private-notification/private-notification.component';
 import { DashboardComponent } from './center/dashboard/dashboard.component';
 import { EarnMoneyComponent } from './center/earn-money/earn-money.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
   align: "left",
   allowNegative: false,
@@ -49,7 +50,8 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     ResultWidgetComponent,
     HistoryComponent,
     PrivateNotificationComponent,
-    EarnMoneyComponent
+    EarnMoneyComponent,
+    PageNotFoundComponent
   ],
   providers: [
     { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }

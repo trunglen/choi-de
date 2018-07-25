@@ -11,8 +11,8 @@ export class UserService {
     increaseMoneyByID(id: string, money: number) {
         const userRef = this.db.database.ref('/user/' + id)
         userRef.once('value').then(function (userSnapshot) {
-        console.log('increase ', (<any>userSnapshot.val()).money, id)
-            userRef.update({ money: (<any>userSnapshot.val()).money + money })
+            const temp = (<any>userSnapshot.val()).money + money
+            userRef.update({ money: temp, sort_money: -temp })
         })
     }
 }

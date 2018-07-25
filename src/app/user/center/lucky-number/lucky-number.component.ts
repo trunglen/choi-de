@@ -38,9 +38,7 @@ export class LuckyNumberComponent implements OnInit {
   }
 
   onGuess(f: NgForm) {
-    this.guessNumber.push(f.value)
-    this.db.database.ref('guess/' + this.afAuth.auth.currentUser.uid + '/' + this.now).set(this.guessNumber)
-    this.updateMoney(false, f.value.money)
+    this.updateMoney(false, f.value.money, f.value)
   }
 
   onDeleteNumber(i: number) {
@@ -49,11 +47,12 @@ export class LuckyNumberComponent implements OnInit {
     this.db.database.ref('guess/' + this.afAuth.auth.currentUser.uid + '/' + this.now).set(this.guessNumber)
   }
 
-  updateMoney(increase: boolean, money: number) {
+  updateMoney(increase: boolean, money: number, formValue?: any) {
     const userObj = this.db.object('user/' + this.uid)
     this.db.database.ref('user/' + this.uid).once('value').then(snap => {
       if (increase) {
-        userObj.update({ money: (<any>snap.val()).money + money })
+        const temp = (<any>snap.val()).money + money
+        userObj.update({ money: temp, sort_money: -temp })
       } else {
         const currentMoney = (<any>snap.val()).money
         if (currentMoney > 0) {
@@ -67,7 +66,12 @@ export class LuckyNumberComponent implements OnInit {
             return
           }
         }
-        userObj.update({ money: currentMoney - money })
+        const temp = currentMoney - money
+        userObj.update({ money: temp, sort_money: -temp })
+      }
+      this.db.database.ref('guess/' + this.afAuth.auth.currentUser.uid + '/' + this.now).set(this.guessNumber)
+      if (formValue) {
+        this.guessNumber.push(formValue)
       }
     })
   }

@@ -47,11 +47,12 @@ export class LoginComponent implements OnInit {
           avatar: user.photoURL,
           email: user.email,
           money: 30000,
+          sort_money: -30000,
           token: (res.credential as any).accessToken,
           uid: user.uid,
           at: -(new Date().getTime())
         })
-        this.db.object('/private_notification/' + user.uid).set({
+        this.db.object('/private_notification/' + user.uid + '/' + new Date().getTime()).set({
           title: 'Xin chào ' + user.displayName,
           content: 'Chào mừng bạn đến với kiemtieneasy. Chúc các bạn kiếm được nhiều tiền và cùng vui với kiemtieneasy, Cùng xem qua luật chơi nhé!',
           at: -(new Date().getTime())

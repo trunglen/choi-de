@@ -2,11 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBDayNa9t95ubqUQEgSMqkhGT4i9hw_yTM",
@@ -20,7 +20,6 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,9 +27,10 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule
-    
+
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
