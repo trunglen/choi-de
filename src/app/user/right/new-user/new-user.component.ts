@@ -14,7 +14,7 @@ export class NewUserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.newUsers = this.db.list('user',ref=>ref.orderByChild('at')).valueChanges()
+    this.newUsers = this.db.list('user',ref=>ref.orderByChild('at').limitToFirst(3)).valueChanges()
   }
 
 }

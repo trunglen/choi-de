@@ -18,9 +18,7 @@ export class NavigationComponent implements OnInit {
   ) { }
 
   logout() {
-    this.afAuth.auth.signOut().then(res => {
-      sessionStorage.clear()
-      this.router.navigate(['/auth/login'])
-    })
+    localStorage.clear()
+    this.router.navigate(['/auth/login'])
   }
 }

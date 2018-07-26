@@ -26,15 +26,15 @@
             <div class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
                 <h4>Chú ý</h4>
                 <p>Mỗi lần click vào nút kiếm tiền bạn sẽ được dẫn đến một link rút gọn. Mỗi lượt bạn hoàn thành chúng tôi sẽ
-                    +1k vào tài khoản của bạn
+                    +2k vào tài khoản của bạn
                 </p>
             </div>
             <div class="w3-center w3-margin">
                 <button class="w3-btn w3-white w3-border w3-border-red w3-text-red w3-round-large" (click)="onEarnMoney()">
-                    <i class="fa fa-spinner fa-spin" *ngIf="isLoading"></i> Kiếm tiền
+                    <i class="fa fa-spinner fa-spin" [hidden]="!isLoading"></i> Kiếm tiền
                 </button>
             </div>
-            <div class="w3-panel w3-round-xxlarge w3-teal" *ngIf="showResult">
+            <div class="w3-panel w3-round-xxlarge w3-teal" [hidden]="!showResult">
                  <p class="w3-center"><a href="{{shortenLink}}">{{shortenLink}}</a> </p>
             </div>
         </div>
@@ -44,11 +44,11 @@
             <div class="w3-row-padding">
                 <br>
                 <p>
-                    <i class="fa fa-user-secret fa-fw  w3-margin-right w3-text-theme"></i> admin1@opencoder.com</p>
+                    <i class="fa fa-user-secret fa-fw  w3-margin-right w3-text-theme"></i> grurtnel@opencoder.com</p>
                 <p>
-                    <i class="fa fa-user-secret  fa-fw w3-margin-right w3-text-theme"></i> admin1@opencoder.com</p>
+                    <i class="fa fa-user-secret  fa-fw w3-margin-right w3-text-theme"></i> tungdt@opencoder.com</p>
                 <p>
-                    <i class="fa fa-user-secret  fa-fw w3-margin-right w3-text-theme"></i> admin1@opencoder.com</p>
+                    <i class="fa fa-user-secret  fa-fw w3-margin-right w3-text-theme"></i> trongnv@opencoder.com</p>
             </div>
         </div>
     </div>

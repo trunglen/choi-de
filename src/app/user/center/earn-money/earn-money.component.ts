@@ -19,7 +19,7 @@ export class EarnMoneyComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const uid = sessionStorage.getItem('app_uid')
+    const uid = localStorage.getItem('app_uid')
     this.activatedRoute.params.subscribe(res => {
       this.http.get(endpoint + '/link/token/check?uid='
         + uid + '&token=' + res.id).subscribe((res: any) => {

@@ -14,9 +14,9 @@
                 <h4 class="w3-center">{{profile.name}}</h4>
                 <p class="w3-center"><img [src]="profile.avatar" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
                 <hr>
-                <p><i class="fa fa-money w3-margin-right w3-text-theme"></i> {{profile.money}}</p>
-                <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-                <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+                <p class="w3-center"><i class="fa fa-money w3-margin-right w3-text-theme"></i> {{profile.money}} VNĐ </p>
+                <!-- <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p> -->
+                <!-- <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p> -->
                </div>
              </div>
              <br>
@@ -39,32 +39,22 @@
              
            <!-- End Middle Column -->
            </div>
-           
-           <!-- Right Column -->
            <div class="w3-col m2">
-              <app-result-widget></app-result-widget>
-              <div class="w3-card w3-round w3-white w3-center">
-                  <div class="w3-container">
-                    <p>Kết quả :</p>
-                    <span class="w3-badge w3-xxxlarge w3-padding w3-red">{{luckyNumber}}</span>
-                    <p><button class="w3-button w3-block w3-theme-l4" *ngIf="hideStop" (click)="startRandom()">Bắt đầu tìm</button></p>
-                    <p><button class="w3-button w3-block w3-theme-l4" *ngIf="!hideStop" (click)="stopRandom()">Dừng tìm</button></p>
-                  </div>
-                </div>
-                <br>
-             
-             <app-new-user></app-new-user>
-             <br>
-             <app-top-user></app-top-user>
-           <!-- End Right Column -->
-           </div>
+            <app-result-widget></app-result-widget>
+              <br>
+              <app-top-user></app-top-user>
+           <br>
+           <app-new-user></app-new-user>           
+         <!-- End Right Column -->
+         </div>
+          
          <!-- End Grid -->
          </div>
        <!-- End Page Container -->
        </div>
        <br>
        <footer class="w3-container w3-theme-d5">
-         <p>Copyright by <a href="https://opencoder.org" target="_blank">Grurt Nel</a></p>
+         <p>Copyright by <a href="https://money.opencoder.org" target="_blank">Grurt Nel</a></p>
        </footer>    
 </div>
 <!-- Navbar -->

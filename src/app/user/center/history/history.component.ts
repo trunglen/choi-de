@@ -17,7 +17,7 @@ export class HistoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const uid = sessionStorage.getItem('app_uid')
+    const uid = localStorage.getItem('app_uid')
     this.guess$ = this.db.list('/guess/' + uid).valueChanges()
     this.db.database.ref('/guess/' + uid).once('value').then(res => {
       console.log(res.val(), uid)

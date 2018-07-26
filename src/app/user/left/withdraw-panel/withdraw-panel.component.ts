@@ -5,10 +5,10 @@ import { endpoint } from '../../../common/constant';
 @Component({
   selector: 'app-withdraw-panel',
   templateUrl: './withdraw-panel.component.html',
-  styleUrls: ['./withdraw-panel.component.scss']
+  styleUrls: ['./withdraw-panel.component.css']
 })
 export class WithdrawPanelComponent implements OnInit {
-  shortenLink
+  shortenLink = ''
   isLoading = false
   showResult = false
   constructor(
@@ -16,13 +16,22 @@ export class WithdrawPanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isLoading = false
+    this.showResult = false
   }
 
   onEarnMoney() {
     this.isLoading = true
-    this.http.get(endpoint + '/link/token/generate?uid=' + sessionStorage.getItem('app_uid')).subscribe((res: any) => {
+    console.log(this.isLoading, this.showResult)
+
+    this.http.get(endpoint + '/link/token/generate?uid=' + localStorage.getItem('app_uid')).subscribe((res: any) => {
       this.shortenLink = res.shortened_url
       this.showResult = true
-    }, err => console.log(err), () => this.isLoading = false)
+      console.log(this.isLoading, this.showResult)
+    }, err => console.log(err), () => {
+      console.log('finish')
+      console.log(this.isLoading, this.showResult)
+      this.isLoading = false
+    })
   }
 }

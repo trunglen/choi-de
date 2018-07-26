@@ -16,10 +16,10 @@ export class PrivateNotificationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.notif$ = this.db.list('/private_notification/' + sessionStorage.getItem('app_uid'), ref => ref.orderByChild('at')).valueChanges()
+    this.notif$ = this.db.list('/private_notification/' + localStorage.getItem('app_uid'), ref => ref.orderByChild('at')).valueChanges()
   }
 
   onDelete(at: number) {
-    this.db.database.ref('/private_notification/' + sessionStorage.getItem('app_uid') + '/' + at).remove()
+    this.db.database.ref('/private_notification/' + localStorage.getItem('app_uid') + '/' + at).remove()
   }
 }

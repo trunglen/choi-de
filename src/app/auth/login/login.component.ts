@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     let provider = new firebase.auth.GoogleAuthProvider();
     this.afAuth.auth.signInWithPopup(provider).then(res => {
       this.saveUser(res)
-      this.router.navigate(['/'], { relativeTo: this.activedRoute })
+      this.router.navigate(['/'])
     });
   }
 
@@ -32,14 +32,14 @@ export class LoginComponent implements OnInit {
     let provider = new firebase.auth.FacebookAuthProvider();
     this.afAuth.auth.signInWithPopup(provider).then(res => {
       this.saveUser(res)
-      this.router.navigate(['/'], { relativeTo: this.activedRoute })
+      this.router.navigate(['/'])
     });
   }
 
   saveUser(res: firebase.auth.UserCredential) {
     const user = res.user
     const userRef = this.db.database.ref('user/' + user.uid)
-    sessionStorage.setItem('app_uid', res.user.uid)
+    localStorage.setItem('app_uid', res.user.uid)
     userRef.once('value').then(val => {
       if (!val.exists()) {
         userRef.set({
